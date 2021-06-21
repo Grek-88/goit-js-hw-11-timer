@@ -1,16 +1,27 @@
 {
   "name": "goit-js-hw-11-timer",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
     "parcel-bundler": "^1.12.5"
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url /goit-js-hw-11-timer/",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grek-88/goit-js-hw-11-timer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Grek-88/goit-js-hw-11-timer/issues"
+  },
+  "homepage": "https://Grek-88.github.io/goit-js-hw-11-timer",
+  "description": ""
 }
