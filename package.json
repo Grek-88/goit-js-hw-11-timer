@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "glob-parent": "^6.0.0",
+    "normalize-url": "^6.0.1",
     "parcel-bundler": "^1.12.5"
   },
   "devDependencies": {},
@@ -23,5 +25,5 @@
     "url": "https://github.com/Grek-88/goit-js-hw-11-timer/issues"
   },
   "homepage": "https://Grek-88.github.io/goit-js-hw-11-timer",
-  "description": ""
+  "description": "goit-js-hw-11-timer"
 }
