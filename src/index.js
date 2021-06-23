@@ -1,67 +1,65 @@
-const refs = {
-    days: document.querySelector('span[data-value="days"]'),
-    hours: document.querySelector('span[data-value="hours"]'),
-    mins: document.querySelector('span[data-value="mins"]'),
-    secs: document.querySelector('span[data-value="secs"]')
-};
+import template from './template.hbs';
 
 
 class CountdownTimer { 
-    constructor({targetDate, onTick}) {
+    constructor({selector, targetDate}) {
+        this.selector = selector;
         this.targetDate = targetDate;
-        this.onTick = onTick;
+        this.mekeMarkup();
         this.start();
+        console.log(this.targetDate);
+        
+    }
+
+    mekeMarkup() {
+        const markup = template();
+        document.body.insertAdjacentHTML('afterbegin', markup);
+        document.querySelector('.timer').id = this.selector;
     }
     
     start() {
-         setInterval(() => {
+         const refs = {
+            days: document.querySelector('span[data-value="days"]'),
+            hours: document.querySelector('span[data-value="hours"]'),
+            mins: document.querySelector('span[data-value="mins"]'),
+            secs: document.querySelector('span[data-value="secs"]')
+        }
+
+        setInterval(() => {
+            
             const timeNow = Date.now();
             const deltaTime = this.targetDate - timeNow;
             const { days, hours, mins, secs } = this.getTimeComponents(deltaTime);
-            this.onTick({ days, hours, mins, secs })
+            
+            refs.days.textContent = `${days}`;
+            refs.hours.textContent = `${hours}`;
+            refs.mins.textContent = `${mins}`;
+            refs.secs.textContent = `${secs}`
+            
         }, 1000);
     }
+   
+    
 
     getTimeComponents(time) {
-    /*
-    * Оставшиеся дни: делим значение UTC на 1000 * 60 * 60 * 24, количество
-    * миллисекунд в одном дне (миллисекунды * секунды * минуты * часы)
-    */
-    const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
-    /*
-    * Оставшиеся часы: получаем остаток от предыдущего расчета с помощью оператора
-    * остатка % и делим его на количество миллисекунд в одном часе
-    * (1000 * 60 * 60 = миллисекунды * минуты * секунды)
-    */
-    const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-    /*
-    * Оставшиеся минуты: получаем оставшиеся минуты и делим их на количество
-    * миллисекунд в одной минуте (1000 * 60 = миллисекунды * секунды)
-    */
-    const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
-    /*
-    * Оставшиеся секунды: получаем оставшиеся секунды и делим их на количество
-    * миллисекунд в одной секунде (1000)
-    */
-    const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));
-        
-    return { days, hours, mins, secs }
-    }
+        const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+        const hours = this.pad(Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+        const mins = this.pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+        const secs = this.pad(Math.floor((time % (1000 * 60)) / 1000));   
+        return { days, hours, mins, secs }   
+        }
 
     pad(value) {
     return String(value).padStart(2, '0')
-    }
+        }
 };
 
 const timer = new CountdownTimer({
-        // selector: '#timer-1',
-        targetDate: new Date('Jul 28, 2021'),
-        onTick: updateInterface, 
-    });
+        selector: '#timer-1',
+        targetDate: new Date('Jul 28, 2021')
+});
 
-function updateInterface({ days, hours, mins, secs }) {
-    refs.days.textContent = `${days}`;
-    refs.hours.textContent = `${hours}`;
-    refs.mins.textContent = `${mins}`;
-    refs.secs.textContent = `${secs}`;
- };
+const timer2 = new CountdownTimer({
+        selector: '#timer-2',
+        targetDate: new Date('Jun 28, 2021')
+});      
