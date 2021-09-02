@@ -1,21 +1,67 @@
 <div class="timer" id="">
-    <div class="field">
-        <span class="value" data-value="days"></span>
-        <span class="label">Days</span>
-    </div>
+  <div class="field">
+    <span class="value" data-value="days"></span>
+    <span class="label">Days</span>
+  </div>
 
-    <div class="field">
-        <span class="value" data-value="hours"></span>
-        <span class="label">Hours</span>
-    </div>
+  <div class="field">
+    <span class="value" data-value="hours"></span>
+    <span class="label">Hours</span>
+  </div>
 
-    <div class="field">
-        <span class="value" data-value="mins"></span>
-        <span class="label">Minutes</span>
-    </div>
+  <div class="field">
+    <span class="value" data-value="mins"></span>
+    <span class="label">Minutes</span>
+  </div>
 
-    <div class="field">
-        <span class="value" data-value="secs"></span>
-        <span class="label">Seconds</span>
-    </div>
-</div><br>
+  <div class="field">
+    <span class="value" data-value="secs"></span>
+    <span class="label">Seconds</span>
+  </div>
+</div><br />
+
+<div id="" class="countdownHolder timer">
+  <span class="countDays">
+    {{! <span class="position">
+      <span class="digit static"></span>
+    </span> }}
+    <span class="position">
+      <span class="digit static" data-value="days"></span>
+    </span>
+  </span>
+
+  <span class="countDiv countDiv0"></span>
+
+  <span class="countHours">
+    {{! <span class="position">
+      <span class="digit static"></span>
+    </span> }}
+    <span class="position">
+      <span class="digit static" data-value="hours"></span>
+    </span>
+  </span>
+
+  <span class="countDiv countDiv1"></span>
+
+  <span class="countMinutes">
+    {{! <span class="position">
+      <span class="digit static"></span>
+    </span> }}
+    <span class="position">
+      <span class="digit static" data-value="mins"></span>
+    </span>
+  </span>
+
+  <span class="countDiv countDiv2"></span>
+
+  <span class="countSeconds">
+    {{! <span class="position">
+      <span class="digit static"></span>
+    </span> }}
+    <span class="position">
+      <span class="digit static" data-value="secs"></span>
+    </span>
+  </span>
+
+  <span class="countDiv countDiv3"></span>
+</div>
